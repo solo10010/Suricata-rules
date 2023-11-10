@@ -1,0 +1,9 @@
+
+alert http any any -> any any (msg:"TThreatHunter Rule - SQL verb in HTTP"; flow:established,to_server; content:"DELETE"; http_header; content:"FROM"; http_header; distance:0; threshold:type limit, track by_src, seconds 60, count 1; classtype:bad-unknown; sid:2610134; rev:1;)
+alert http any any -> any any (msg:"TThreatHunter Rule - SQL verb in HTTP"; flow:established,to_server; content:"EXEC"; http_header; content:"FROM"; http_header; distance:0; threshold:type limit, track by_src, seconds 60, count 1; classtype:bad-unknown; sid:2610135; rev:1;)
+alert http any any -> any any (msg:"TThreatHunter Rule - SQL verb in HTTP"; flow:established,to_server; content:"INSERT"; http_header; content:"INTO"; http_header; distance:0; threshold:type limit, track by_src, seconds 60, count 1; classtype:bad-unknown; sid:2610136; rev:1;)
+alert http any any -> any any (msg:"TThreatHunter Rule - SQL verb in HTTP"; flow:established,to_server; content:"SELECT"; http_header; pcre:"/\b(?:INTO|FROM|USER|UPPER|LOWER|CONCAT)\b/RH";threshold:type limit, track by_src, seconds 60, count 1; classtype:bad-unknown; sid:2610137; rev:1;)
+alert http any any -> any any (msg:"TThreatHunter Rule - SQL verb in HTTP"; flow:established,to_server; content:"SHOW"; http_header;  pcre:"/\b(?:CHAR|CUR|TABLE|VAR)/RH";threshold:type limit, track by_src, seconds 60, count 1; classtype:bad-unknown; sid:2610138; rev:1;)
+alert http any any -> any any (msg:"TThreatHunter Rule - SQL verb in HTTP"; flow:established,to_server; content:"UNION"; http_header; content:"SELECT"; http_header; distance:0; threshold:type limit, track by_src, seconds 60, count 1; classtype:bad-unknown; sid:2610139; rev:1;)
+alert http any any -> any any (msg:"TThreatHunter Rule - SQL verb in HTTP"; flow:established,to_server; content:"UPDATE"; http_header; content:"SET"; http_header; distance:0; threshold:type limit, track by_src, seconds 60, count 1; classtype:bad-unknown; sid:2610140; rev:1;)
+

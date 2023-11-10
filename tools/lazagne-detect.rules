@@ -1,0 +1,2 @@
+alert http any any -> any any (msg:"TThreatHunter Rule - LaZagne Artifact in HTTP POST"; flow:to_server,established; content:"LaZagne Project"; http_client_body; classtype:bad-unknown; sid:2610166; rev:1;)
+alert http any any -> any any (msg:"TThreatHunter Rule - LaZagne Artifact in HTTP POST 2"; flow:to_server,established; content:"|20|passwords -----------------"; http_client_body; classtype:bad-unknown; sid:2610167; rev:1;)

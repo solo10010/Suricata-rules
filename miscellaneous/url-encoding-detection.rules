@@ -1,0 +1,7 @@
+# URL encoding detection
+
+#alert http any any -> any any (msg:"TThreatHunter Rule - Double Encoded Characters in URI <>"; flow:to_server,established; content:"%253C"; nocase; http_raw_uri; content:"%253E"; nocase; http_raw_uri; threshold:type limit, track by_src, seconds 60, count 1; classtype:bad-unknown; sid:2610109; rev:1;)
+#alert http any any -> any any (msg:"TThreatHunter Rule - Double Encoded Characters in URI x28 x29"; flow:to_server,established; content:"%2528"; nocase; http_raw_uri; content:"%2529"; nocase; http_raw_uri;threshold:type limit, track by_src, seconds 60, count 1; classtype:bad-unknown; sid:2610110; rev:1;)
+#alert http any any -> any any (msg:"TThreatHunter Rule - Double Encoded Characters in URI x3a"; flow:to_server,established; content:"%253A"; nocase; http_raw_uri; threshold:type limit, track by_src, seconds 60, count 1; classtype:bad-unknown; sid:2610111; rev:1;)
+#alert http any any -> any any (msg:"TThreatHunter Rule - Double Encoded Characters in URI x3b"; flow:to_server,established; content:"%253B"; nocase; http_raw_uri; threshold:type limit, track by_src, seconds 60, count 1; classtype:bad-unknown; sid:2610112; rev:1;)
+#alert http any any -> any any (msg:"TThreatHunter Rule - Double Encoded Characters in HTTP POST"; flow:to_server,established; content:"%2525"; nocase; http_client_body; threshold:type limit, track by_src, seconds 60, count 1; classtype:bad-unknown; sid:2610107; rev:1;)
